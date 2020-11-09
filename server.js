@@ -1,11 +1,18 @@
 require('dotenv').config();
-require('./lib/client').connect();
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const request = require('superagent');
+const port = 3000;
 
-const app = require('./lib/app');
+app.use(cors());
 
-const PORT = process.env.PORT || 7890;
+app.get('/', async(req, res) => {
+  res.send('Hello world!');
+});
 
-app.listen(PORT, () => {
+
+app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`Started on ${PORT}`);
+  console.log(`Started on ${port}`);
 });
