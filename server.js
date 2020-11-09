@@ -4,15 +4,37 @@ const app = express();
 const cors = require('cors');
 const request = require('superagent');
 const port = process.env.PORT || 3000;
+const geoData = require('./data/geo.json');
+const { geoMunge } = require('./utils.js');
 
 app.use(cors());
 
 app.get('/', async(req, res) => {
-  res.send('Hello world!');
+  try {
+    //const URL = 'http://localhost:3000/data/geo.json';
+    const mungedData = geoMunge(geoData);
+    //const response = await request.get(URL);
+    res.json(mungedData);
+  } catch(e) {
+    res.json({ error: e.message });
+  }
 });
+
+
+app.get('/location', async(req, res) => {
+  try {
+    //const URL = 'http://localhost:3000/data/geo.json';
+    const mungedData = geoMunge(geoData);
+    //const response = await request.get(URL);
+    res.json(mungedData);
+  } catch(e) {
+    res.json({ error: e.message });
+  }
+});
+
 
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Started on ${port}`);
+  console.log(`Started on http://localhost:${port}`);
 });
+
