@@ -12,9 +12,9 @@ app.use(cors());
 app.get('/', async(req, res) => {
   try {
     //const URL = 'http://localhost:3000/data/geo.json';
-    const mungedData = geoMunge(geoData);
+    //const mungedData = geoMunge(geoData);
     //const response = await request.get(URL);
-    res.json(mungedData);
+    res.json(geoData);
   } catch(e) {
     res.json({ error: e.message });
   }
