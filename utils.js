@@ -11,14 +11,19 @@ function geoMunge(geoData) {
 
 function weatherMunge(weatherData) {
 
-  const firstItem = weatherData[0];
-  return {
-    forecast: firstItem.weather,
-    time: firstItem.datetime
-  };
+  return weatherData.data[0].weather.description;
+  
+  // const firstItem.map = weatherData[0];
+  // return {
+  //   forecast: firstItem.data,
+  //   time: firstItem.datetime
+  // };
+
+
 }
 
 
 module.exports = {
-  geoMunge
+  geoMunge,
+  weatherMunge
 };

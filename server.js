@@ -5,7 +5,7 @@ const cors = require('cors');
 const request = require('superagent');
 const port = process.env.PORT || 3000;
 const geoData = require('./data/geo.json');
-const { geoMunge } = require('./utils.js');
+const { geoMunge, weatherMunge } = require('./utils.js');
 const weatherData = require('./data/weather.json');
 
 app.use(cors());
@@ -36,6 +36,13 @@ app.get('/location', async(req, res) => {
 });
 
 
+
+
+
+
+
+
+
 //.GET for all the Weather data
 app.get('/weatherAll', async(req, res) => {
   try {
@@ -49,17 +56,24 @@ app.get('/weatherAll', async(req, res) => {
 //Weather ENDPOINT (Step 2)
 app.get('/weather', async(req, res) => {
   try {
-    const URL = `https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_KEY}&q=${req.query.search}&format=json`;
+    // const URL = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.query.latitude}&lon=${req.query.longitude}&key=${process.env.WEATHER_KEY}`;
 
-    const response = await request.get(URL);
+//     const response = await request.get(URL);
+//     const newResponse = weatherMunge(response.body);
+// console.log(newResponse);
 
-    const newResponse = geoMunge(response.body);
+    const response = weatherMunge(weatherData);
 
-    res.json(newResponse);
+
+    res.json(response);
   } catch(e) {
     res.json({ error: e.message });
   }
 });
+
+
+
+
 
 
 
