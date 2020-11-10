@@ -11,7 +11,9 @@ function geoMunge(geoData) {
 
 function weatherMunge(weatherData) {
 
-  return weatherData.data[0].weather.description;
+  return {
+    forecast: weatherData.data[0].weather.description
+  };
   
   // const firstItem.map = weatherData[0];
   // return {
