@@ -13,7 +13,7 @@ function weatherMunge(weatherData) {
 
   return {
     forecast: weatherData.data[0].weather.description,
-    time: weatherData.data.datetime
+    time: weatherData.data[0].datetime
   };
   
   // const firstItem.map = weatherData[0];
