@@ -9,6 +9,16 @@ function geoMunge(geoData) {
 }
 
 
+function weatherMunge(weatherData) {
+
+  const firstItem = weatherData[0];
+  return {
+    forecast: firstItem.weather,
+    time: firstItem.datetime
+  };
+}
+
+
 module.exports = {
   geoMunge
 };
