@@ -23,10 +23,15 @@ app.get('/', async(req, res) => {
 
 app.get('/location', async(req, res) => {
   try {
-    //const URL = 'http://localhost:3000/data/geo.json';
-    const mungedData = geoMunge(geoData);
-    //const response = await request.get(URL);
-    res.json(mungedData);
+    const URL = `https://us1.locationiq.com/v1/search.php?key=${process.env.GEO_KEY}&q=${req.query.SEARCH_STRING}&format=json`;
+
+    //const mungedData = geoMunge(URL);
+
+    const response = await request.get(URL);
+
+    const newResponse = geoMunge(response.body);
+
+    res.json(newResponse);
   } catch(e) {
     res.json({ error: e.message });
   }
