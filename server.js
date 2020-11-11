@@ -61,10 +61,7 @@ app.get('/weather', async(req, res) => {
     const response = await request.get(URL);
 
     const newResponse = weatherMunge(response.body);
-    
-    //console.log(newResponse);
-    // const response = weatherMunge(weatherData);
-    
+
     res.json(newResponse);
 
   } catch(e) {
@@ -72,6 +69,24 @@ app.get('/weather', async(req, res) => {
   }
 });
 
+
+//Yelp ENDPOINT (Step 3)
+app.get('/yelp', async(req, res) => {
+  try {
+//    const URL = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.query.latitude}&lon=${req.query.longitude}&key=${process.env.WEATHER_KEY}`;
+
+    const URL = 'pizza';
+
+    const response = await request.get(URL);
+
+  //  const newResponse = weatherMunge(response.body);
+
+    res.json(response);
+
+  } catch(e) {
+    res.json({ error: e.message });
+  }
+});
 
 
 
