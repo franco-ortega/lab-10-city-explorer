@@ -1,17 +1,17 @@
 module.exports = [
   {
     id: 1,
-    todo: 'make breakfast',
+    chore: 'make breakfast',
     completed: false
   },
   {
     id: 2,
-    todo: 'make lunch',
+    chore: 'make lunch',
     completed: false
   },
   {
     id: 3,
-    todo: 'make dinner',
+    chore: 'make dinner',
     completed: false
   }
 ];
