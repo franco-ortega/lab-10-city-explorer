@@ -11,19 +11,27 @@ function geoMunge(geoData) {
 
 function weatherMunge(weatherData) {
 
-  return {
-    forecast: weatherData.data[0].weather.description,
-    time: weatherData.data[0].datetime
-  };
+  return weatherData.data.map(oneWeather => {
+console.log(oneWeather);
+    return {
+      forecast: oneWeather.weather.description,
+      time: oneWeather.datetime
+    };
   
-  // const firstItem.map = weatherData[0];
+  });
+
+
+
   // return {
-  //   forecast: firstItem.data,
-  //   time: firstItem.datetime
+  //   forecast: weatherData.data[0].weather.description,
+  //   time: weatherData.data[0].datetime
   // };
 
 
 }
+
+
+
 
 
 module.exports = {
