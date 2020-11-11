@@ -12,7 +12,7 @@ function geoMunge(geoData) {
 function weatherMunge(weatherData) {
 
   return weatherData.data.map(oneWeather => {
-    console.log(oneWeather);
+
     return {
       forecast: oneWeather.weather.description,
       time: oneWeather.datetime
@@ -25,7 +25,6 @@ function yelpMunge(yelpData) {
 
   return yelpData.businesses.map(oneBusiness => {
 
-  
     return {
       name: oneBusiness.name,
       image_url: oneBusiness.image_url,
