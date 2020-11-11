@@ -65,7 +65,7 @@ app.get('/weather', async(req, res) => {
 
 
 //Yelp ENDPOINT (Step 3)
-app.get('/yelp', async(req, res) => {
+app.get('/reviews', async(req, res) => {
   try {
 
     const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
