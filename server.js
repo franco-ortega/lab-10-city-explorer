@@ -82,9 +82,30 @@ app.get('/yelp', async(req, res) => {
 
     //res.json(response.body);
 
-    const test = yelpMunge();
+    const response = yelpMunge(URL);
 
-    res.json(test);
+    res.json(response.body);
+
+  } catch(e) {
+    res.json({ error: e.message });
+  }
+});
+
+//Yelp All ENDPOINT (Step 3b)
+app.get('/yelpAll', async(req, res) => {
+  try {
+
+    const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
+
+    const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
+
+    const newResponse = yelpMunge(response.body);
+
+    res.json(newResponse);
+
+    // const response = yelpMunge(URL);
+
+    // res.json(response.body);
 
   } catch(e) {
     res.json({ error: e.message });

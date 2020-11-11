@@ -21,8 +21,20 @@ function weatherMunge(weatherData) {
   }).slice(0, 8);
 }
 
-function yelpMunge() {
-  return 'puppies!!';
+function yelpMunge(yelpData) {
+
+  return yelpData.businesses.map(oneBusiness => {
+
+  
+    return {
+      name: oneBusiness.name,
+      image_url: oneBusiness.image_url,
+      price: oneBusiness.price,
+      rating: oneBusiness.rating,
+      url: oneBusiness.url
+    };
+
+  });
 }
 
 
