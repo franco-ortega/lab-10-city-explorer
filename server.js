@@ -65,21 +65,21 @@ app.get('/weather', async(req, res) => {
 
 
 //Yelp ENDPOINT (Step 3)
-// app.get('/reviews', async(req, res) => {
-//   try {
+app.get('/reviews', async(req, res) => {
+  try {
 
-//     const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
+    const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
 
-//     const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
+    const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
 
-//     const newResponse = yelpMunge(response.body);
+    const newResponse = yelpMunge(response.body);
 
-//     res.json(newResponse);
+    res.json(newResponse);
 
-//   } catch(e) {
-//     res.json({ error: e.message });
-//   }
-// });
+  } catch(e) {
+    res.json({ error: e.message });
+  }
+});
 
 
 
