@@ -12,15 +12,21 @@ function geoMunge(geoData) {
 function weatherMunge(weatherData) {
 
   return weatherData.data.map(oneWeather => {
-console.log(oneWeather);
+    console.log(oneWeather);
     return {
       forecast: oneWeather.weather.description,
       time: oneWeather.datetime
     };
   
   }).slice(0, 8);
-
 }
+
+function yelpMunge() {
+  return 'puppies!!';
+}
+
+
+
 
 
 
@@ -28,5 +34,6 @@ console.log(oneWeather);
 
 module.exports = {
   geoMunge,
-  weatherMunge
+  weatherMunge,
+  yelpMunge
 };

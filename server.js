@@ -5,7 +5,7 @@ const cors = require('cors');
 const request = require('superagent');
 const port = process.env.PORT || 3000;
 const geoData = require('./data/geo.json');
-const { geoMunge, weatherMunge } = require('./utils.js');
+const { geoMunge, weatherMunge, yelpMunge } = require('./utils.js');
 const weatherData = require('./data/weather.json');
 
 app.use(cors());
@@ -73,15 +73,18 @@ app.get('/weather', async(req, res) => {
 //Yelp ENDPOINT (Step 3)
 app.get('/yelp', async(req, res) => {
   try {
-//    const URL = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.query.latitude}&lon=${req.query.longitude}&key=${process.env.WEATHER_KEY}`;
 
     const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
 
-    const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
+    //const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
 
-  //  const newResponse = yelpMunge(response.body);
+    //const newResponse = yelpMunge(response.body);
 
-    res.json(response.body);
+    //res.json(response.body);
+
+    const test = yelpMunge();
+
+    res.json(test);
 
   } catch(e) {
     res.json({ error: e.message });
