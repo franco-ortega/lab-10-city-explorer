@@ -37,13 +37,7 @@ app.get('/location', async(req, res) => {
 
 
 
-
-
-
-
-
-
-//.GET for all the Weather data
+//.GET for all the Weather data (Step 1)
 app.get('/weatherAll', async(req, res) => {
   try {
     res.json(weatherData);
@@ -76,46 +70,16 @@ app.get('/yelp', async(req, res) => {
 
     const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
 
-    //const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
-
-    //const newResponse = yelpMunge(response.body);
-
-    //res.json(response.body);
-
-    const response = yelpMunge(URL);
-
-    res.json(response.body);
-
-  } catch(e) {
-    res.json({ error: e.message });
-  }
-});
-
-//Yelp All ENDPOINT (Step 3b)
-app.get('/yelpAll', async(req, res) => {
-  try {
-
-    const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
-
     const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
 
     const newResponse = yelpMunge(response.body);
 
     res.json(newResponse);
 
-    // const response = yelpMunge(URL);
-
-    // res.json(response.body);
-
   } catch(e) {
     res.json({ error: e.message });
   }
 });
-
-
-
-
-
 
 
 
