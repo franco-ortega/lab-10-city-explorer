@@ -18,15 +18,7 @@ console.log(oneWeather);
       time: oneWeather.datetime
     };
   
-  });
-
-
-
-  // return {
-  //   forecast: weatherData.data[0].weather.description,
-  //   time: weatherData.data[0].datetime
-  // };
-
+  }).slice(0, 8);
 
 }
 
