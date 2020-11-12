@@ -8,7 +8,6 @@ function geoMunge(geoData) {
   };
 }
 
-
 function weatherMunge(weatherData) {
 
   return weatherData.data.map(oneWeather => {
@@ -17,7 +16,6 @@ function weatherMunge(weatherData) {
       forecast: oneWeather.weather.description,
       time: oneWeather.datetime
     };
-  
   }).slice(0, 8);
 }
 
@@ -32,7 +30,6 @@ function yelpMunge(yelpData) {
       rating: oneBusiness.rating,
       url: oneBusiness.url
     };
-
   });
 }
 
@@ -53,14 +50,7 @@ function trailsMunge(trailsData) {
       condition_time: 'n/a'
     };
   });
-
 }
-
-
-
-
-
-
 
 module.exports = {
   geoMunge,
