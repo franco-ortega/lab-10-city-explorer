@@ -5,8 +5,8 @@ const cors = require('cors');
 const request = require('superagent');
 const port = process.env.PORT || 3000;
 const geoData = require('./data/geo.json');
-const { geoMunge, weatherMunge, yelpMunge } = require('./utils.js');
-const weatherData = require('./data/weather.json');
+const { geoMunge, weatherMunge, yelpMunge, trailsMunge } = require('./utils.js');
+//const weatherData = require('./data/weather.json');
 
 app.use(cors());
 
@@ -80,6 +80,33 @@ app.get('/reviews', async(req, res) => {
     res.json({ error: e.message });
   }
 });
+
+
+//Trails ENDPOINT (Step 4)
+app.get('/trails', async(req, res) => {
+  try {
+
+    // const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
+
+    // const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
+
+//    const URL = `https://www.hikingproject.com/data/get-trails?lat=${req.query.latitude}&lon=${req.query.longitude}&maxDistance=200&key=${process.env.TRAILS_KEY}`;
+
+    const URL2 = 'https://www.hikingproject.com/data/get-trails?lat=45.6528812&lon=-122.8367489&maxDistance=200&key=200965076-c4d700c6cc9848e5b38f8696d3d1038a';
+
+
+    const response = await request.get(URL2);
+
+    const newResponse = trailsMunge(response.body);
+
+    res.json(newResponse);
+
+
+  } catch(e) {
+    res.json({ error: e.message });
+  }
+});
+
 
 
 
