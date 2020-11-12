@@ -1,41 +1,6 @@
 require('dotenv').config();
 const { geoMunge, weatherMunge, yelpMunge, trailsMunge } = require('../utils.js');
 
-// const { execSync } = require('child_process');
-
-// const fakeRequest = require('supertest');
-// const app = require('../lib/app');
-// const client = require('../lib/client');
-
-// describe('app routes', () => {
-//   describe('routes', () => {
-//     let token;
-  
-//     beforeAll(async done => {
-//       execSync('npm run setup-db');
-  
-//       client.connect();
-  
-//       const signInData = await fakeRequest(app)
-//         .post('/auth/signup')
-//         .send({
-//           email: 'jon@user.com',
-//           password: '1234'
-//         });
-      
-//       token = signInData.body.token;
-  
-//       return done();
-//     });
-  
-//     afterAll(done => {
-//       return client.end(done);
-//     });
-
-
-
-
-
 test('returns munged location data', async() => {
 
   const input =   [{
@@ -88,7 +53,6 @@ test('returns munged location data', async() => {
 
   expect(output).toEqual(expectation);
 });
-
 
 test('returns munged weather data', async() => {
 
@@ -151,11 +115,9 @@ test('returns munged weather data', async() => {
   expect(output).toEqual(expectation);
 });
 
+test('returns munged yelp data', async() => {
 
-
-test.only('returns munged yelp data', async() => {
-
-  const input =  { businesses: [ {
+  const input =  { businesses: [{
     'id': 'WavvLdfdP6g8aZTtbBQHTw',
     'alias': 'gary-danko-san-francisco',
     'name': 'Gary Danko',
@@ -282,9 +244,6 @@ test.only('returns munged yelp data', async() => {
   expect(output).toEqual(expectation);
 });
 
-
-
-
 test('returns munged trails data', async() => {
 
   const input =   {
@@ -314,7 +273,6 @@ test('returns munged trails data', async() => {
         'conditionDetails': 'Dry',
         'conditionDate': '2020-10-13 14:06:06'
       }],
-        
   };
 
   const expectation = [
@@ -335,4 +293,3 @@ test('returns munged trails data', async() => {
 
   expect(output).toEqual(expectation);
 });
-
