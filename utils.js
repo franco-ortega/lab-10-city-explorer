@@ -38,30 +38,21 @@ function yelpMunge(yelpData) {
 
 function trailsMunge(trailsData) {
 
-  return {
-    name: trailsData.trails[0].name,
-    location: trailsData.trails[0].location,
-    length: trailsData.trails[0].length,
-    stars: trailsData.trails[0].stars,
-    star_votes: trailsData.trails[0].starVotes,
-    summary: trailsData.trails[0].summary,
-    trail_url: trailsData.trails[0].url,
-    conditions: trailsData.trails[0].conditionStatus,
-    condition_date: trailsData.trails[0].conditionDate,
-    condition_time: 'n/a'
-  };
+  return trailsData.trails.map(oneTrail => {
 
-  // return yelpData.businesses.map(oneBusiness => {
-
-  //   return {
-  //     name: oneBusiness.name,
-  //     image_url: oneBusiness.image_url,
-  //     price: oneBusiness.price,
-  //     rating: oneBusiness.rating,
-  //     url: oneBusiness.url
-  //   };
-
-  // });
+    return {
+      name: oneTrail.name,
+      location: oneTrail.location,
+      length: oneTrail.length,
+      stars: oneTrail.stars,
+      star_votes: oneTrail.starVotes,
+      summary: oneTrail.summary,
+      trail_url: oneTrail.url,
+      conditions: oneTrail.conditionStatus,
+      condition_date: oneTrail.conditionDate,
+      condition_time: 'n/a'
+    };
+  });
 
 }
 
