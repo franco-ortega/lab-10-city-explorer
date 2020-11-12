@@ -86,16 +86,12 @@ app.get('/reviews', async(req, res) => {
 app.get('/trails', async(req, res) => {
   try {
 
-    // const URL = `https://api.yelp.com/v3/businesses/search?latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
+    const URL = `https://www.hikingproject.com/data/get-trails?lat=${req.query.latitude}&lon=${req.query.longitude}&maxDistance=200&key=${process.env.TRAIL_API_KEY}`;
 
-    // const response = await request.get(URL).set('Authorization', `Bearer ${process.env.YELP_API_KEY}`);
-
-//    const URL = `https://www.hikingproject.com/data/get-trails?lat=${req.query.latitude}&lon=${req.query.longitude}&maxDistance=200&key=${process.env.TRAILS_KEY}`;
-
-    const URL2 = 'https://www.hikingproject.com/data/get-trails?lat=45.6528812&lon=-122.8367489&maxDistance=200&key=200965076-c4d700c6cc9848e5b38f8696d3d1038a';
+    //const URL2 = 'https://www.hikingproject.com/data/get-trails?lat=45.6528812&lon=-122.8367489&maxDistance=200&key=200965076-c4d700c6cc9848e5b38f8696d3d1038a';
 
 
-    const response = await request.get(URL2);
+    const response = await request.get(URL);
 
     const newResponse = trailsMunge(response.body);
 
